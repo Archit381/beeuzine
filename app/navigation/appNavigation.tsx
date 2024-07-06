@@ -10,6 +10,7 @@ import Signin from "../screens/Auth/Sign-in/signin";
 import Signup from "../screens/Auth/Sign-Up/signup";
 import HomeScreen from "../screens/HomeScreen/homeScreen";
 import AccountScreen from "../screens/AccountScreen/accountScreen";
+import ForgotPassword from "../screens/Auth/ForgotPass/forgotPassword";
 
 type Props = {};
 
@@ -94,6 +95,14 @@ const AppNavigation = (props: Props) => {
               component={Signup}
               options={{
                 title: "Sign-up Screen",
+                headerShown: false,
+              }}
+            />
+            <OutsideStack.Screen
+              name="ForgotPass"
+              component={ForgotPassword}
+              options={{
+                title: "Forgot Password Screen",
                 headerShown: false,
               }}
             />
