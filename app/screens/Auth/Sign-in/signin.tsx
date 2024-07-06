@@ -13,6 +13,7 @@ import { supabase } from "../../../../lib/supabase";
 import { useNavigation } from "@react-navigation/native";
 import GradientButton from "../../../components/GradientButton/gradientButton";
 import ColorBoxes from "../../../components/ColorBoxes/colorBoxes";
+import LottieView from "lottie-react-native";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -103,15 +104,24 @@ const Signin = () => {
 
       <View style={{ display: "flex", flex: 1.5 }}>
         <View style={{ paddingHorizontal: width * 0.06 }}>
-          <Text
-            style={{
-              fontSize: height * 0.04,
-              fontWeight: "bold",
-              color: "black",
-            }}
-          >
-            Login
-          </Text>
+          <View style={{ flexDirection: "row", alignItems: 'center' }}>
+            <Text
+              style={{
+                fontSize: height * 0.04,
+                fontWeight: "bold",
+                color: "black",
+              }}
+            >
+              Login
+            </Text>
+            <LottieView
+              source={require("../../../assets/lottie/bee_2.json")}
+              style={{ height: height*0.1, width: height*0.1, marginLeft: 10 }}
+              autoPlay
+              loop
+            />
+          </View>
+
           <Text
             style={{
               fontSize: height * 0.02,
@@ -158,7 +168,7 @@ const Signin = () => {
               placeholder="Password"
               autoCapitalize={"none"}
             />
-            <TouchableOpacity onPress={()=>navigation.navigate("ForgotPass")}>
+            <TouchableOpacity onPress={() => navigation.navigate("ForgotPass")}>
               <Text
                 style={{
                   fontSize: height * 0.015,
