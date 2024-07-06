@@ -34,8 +34,9 @@ const Signin = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
+    <View style={{marginTop: 40,padding: 12}}>
+      <Text>Signin</Text>
+      <View style={{paddingTop: 4, paddingBottom: 4, alignSelf: "stretch", marginTop: 20}}>
         <Input
           label="Email"
           leftIcon={{ type: "font-awesome", name: "envelope" }}
@@ -45,7 +46,7 @@ const Signin = () => {
           autoCapitalize={"none"}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      <View style={{paddingTop: 4, paddingBottom: 4, alignSelf: "stretch"}}>
         <Input
           label="Password"
           leftIcon={{ type: "font-awesome", name: "lock" }}
@@ -58,8 +59,8 @@ const Signin = () => {
       </View>
 
       <View>
-        <Text>Signin</Text>
-        <View style={[styles.verticallySpaced, styles.mt20]}>
+        
+        <View style={{paddingTop: 4, paddingBottom: 4, alignSelf: "stretch", marginTop: 20}}>
           <Button
             title="Sign in"
             disabled={loading}
@@ -73,17 +74,3 @@ const Signin = () => {
 
 export default Signin;
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    padding: 12,
-  },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: "stretch",
-  },
-  mt20: {
-    marginTop: 20,
-  },
-});

@@ -43,7 +43,6 @@ const AppNavigation = (props: Props) => {
           options={{
             title: "Home Screen",
             headerShown: false,
-            animation: "slide_from_right",
           }}
         />
         <InsideStack.Screen
@@ -60,16 +59,18 @@ const AppNavigation = (props: Props) => {
 
   return (
     <NavigationContainer>
-      <OutsideStack.Navigator initialRouteName="Sign-up">
+      <OutsideStack.Navigator initialRouteName="Splash">
         {session ? (
-          <OutsideStack.Screen
-            name="InsideScreens"
-            component={InsideLayout}
-            options={{
-              title: "Login Screen",
-              headerShown: false,
-            }}
-          />
+          <>
+            <OutsideStack.Screen
+              name="InsideScreens"
+              component={InsideLayout}
+              options={{
+                title: "Inside Stack",
+                headerShown: false,
+              }}
+            />
+          </>
         ) : (
           <>
             <OutsideStack.Screen
