@@ -13,7 +13,7 @@ const SplashScreen = () => {
 
       supabase.auth.getSession().then(({ data: { session } }) => {
         if(session){
-          navigation.navigate('Home')
+          navigation.navigate('Tabs')
         }else{
           navigation.navigate('Sign-up')
         }

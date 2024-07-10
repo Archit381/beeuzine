@@ -97,12 +97,6 @@ const Signup = () => {
         >
           Create an Account
         </Text>
-        {/* <LottieView
-          source={require("../../../assets/lottie/fluid_3.json")}
-          style={{ height: height*0.1, width: height*0.1, marginLeft: 10 }}
-          autoPlay
-          loop
-        /> */}
         
       </View>
 
