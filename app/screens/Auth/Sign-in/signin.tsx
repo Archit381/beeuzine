@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import GradientButton from "../../../components/GradientButton/gradientButton";
 import ColorBoxes from "../../../components/ColorBoxes/colorBoxes";
 import LottieView from "lottie-react-native";
+import Loading from "../../../components/loader/loading";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -104,22 +105,16 @@ const Signin = () => {
 
       <View style={{ display: "flex", flex: 1.5 }}>
         <View style={{ paddingHorizontal: width * 0.06 }}>
-          <View style={{ flexDirection: "row", alignItems: 'center' }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Text
               style={{
-                fontSize: height * 0.04,
+                fontSize: height * 0.03,
                 fontWeight: "bold",
                 color: "black",
               }}
             >
               Login
             </Text>
-            <LottieView
-              source={require("../../../assets/lottie/bee_2.json")}
-              style={{ height: height*0.1, width: height*0.1, marginLeft: 10 }}
-              autoPlay
-              loop
-            />
           </View>
 
           <Text
@@ -181,11 +176,17 @@ const Signin = () => {
             </TouchableOpacity>
           </View>
 
-          <View style={{ alignItems: "flex-end" }}>
-            <TouchableOpacity onPress={signInWithEmail}>
-              <GradientButton button_text="LOGIN" icon="backBtn" />
-            </TouchableOpacity>
-          </View>
+          {loading ? (
+            <View style={{ alignItems: "center" }}>
+              <Loading height={height * 0.1} />
+            </View>
+          ) : (
+            <View style={{ alignItems: "flex-end" }}>
+              <TouchableOpacity onPress={signInWithEmail}>
+                <GradientButton button_text="LOGIN" icon="backBtn" />
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
 
         <View

@@ -18,7 +18,7 @@ const SplashScreen = () => {
         if(session){
           navigation.navigate('InsideScreens')
         }else{
-          navigation.navigate('Sign-in')
+          navigation.navigate('Sign-up')
         }
       });
 
@@ -35,13 +35,13 @@ const SplashScreen = () => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fbf0e1",
+
       }}
     >
       <Image
         source={require("../../assets/BeeUpng.png")}
         style={{
-          width: width,
+          width: width*0.6,
           resizeMode: "contain",
           marginBottom: height * 0.13,
         }}

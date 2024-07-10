@@ -6,22 +6,24 @@ import {
   Platform,
   TouchableOpacity,
   Alert,
+  Image,
 } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { supabase } from "../../../../lib/supabase";
 import { Input } from "@rneui/themed";
 import GradientButton from "../../../components/GradientButton/gradientButton";
+import { MaterialIcons } from "@expo/vector-icons";
+import Loading from "../../../components/loader/loading";
 
 const ForgotPassword = () => {
-  const { width, height } = Dimensions.get("screen");
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
 
   const platform = Platform.OS;
-
+  const { width, height } = Dimensions.get("screen");
   const navigation = useNavigation();
 
   const getOTP = async () => {
@@ -50,6 +52,7 @@ const ForgotPassword = () => {
   };
 
   const signInWithOtp = async () => {
+    setLoading(true)
     try {
       const {
         data: { session },
@@ -65,23 +68,41 @@ const ForgotPassword = () => {
       } else {
         console.log(session);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    } finally{
+      setLoading(false)
+    }
   };
 
   return (
-    <SafeAreaView style={{ width: width, flex: 1, backgroundColor: "#fefefe" }}>
+    <SafeAreaView style={{ width: width, flex: 1, backgroundColor: "#fefefe" }} >
       <View
-        style={{ marginTop: height * 0.06, paddingHorizontal: width * 0.06 }}
+        style={{ marginTop: platform=="android" ? height*0.06 : height*0.02, paddingHorizontal: width * 0.06 }}
       >
-        <Text
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
           style={{
-            fontSize: height * 0.03,
-            fontWeight: "bold",
-            color: "black",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
           }}
         >
-          Reset Password
-        </Text>
+          <MaterialIcons
+            name="arrow-back-ios"
+            size={height * 0.03}
+            color="black"
+          />
+          <Text
+            style={{
+              fontSize: height * 0.03,
+              fontWeight: "bold",
+              color: "black",
+            }}
+          >
+            Reset Password
+          </Text>
+        </TouchableOpacity>
 
         <View
           style={{
@@ -118,21 +139,23 @@ const ForgotPassword = () => {
         </View>
       </View>
 
-      {otpSent ? (
-        <TouchableOpacity
-          style={{ display: "flex", flex: 1, alignItems: "center" }}
-          onPress={signInWithOtp}
-        >
-          <GradientButton button_text="CONFIRM" icon="none" />
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          style={{ display: "flex", flex: 1, alignItems: "center" }}
-          onPress={getOTP}
-        >
-          <GradientButton button_text="Get OTP" icon="none" />
-        </TouchableOpacity>
-      )}
+      <View style={{ display: "flex", alignItems: "center" }}>
+        {loading ? (
+          <Loading height={height * 0.1} />
+        ) : (
+          <>
+            {otpSent ? (
+              <TouchableOpacity onPress={signInWithOtp}>
+                <GradientButton button_text="CONFIRM" icon="none" />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={getOTP}>
+                <GradientButton button_text="Get OTP" icon="none" />
+              </TouchableOpacity>
+            )}
+          </>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
