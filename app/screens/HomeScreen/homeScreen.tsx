@@ -8,12 +8,8 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>HomeScreen</Text>
-      <Button
-            title="Accounts page"
-            onPress={() => navigation.navigate('Account')}
-          />
     </View>
   )
 }

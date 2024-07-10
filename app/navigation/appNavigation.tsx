@@ -19,7 +19,9 @@ import HomeScreen from "../screens/HomeScreen/homeScreen";
 import AccountScreen from "../screens/AccountScreen/accountScreen";
 import ForgotPassword from "../screens/Auth/ForgotPass/forgotPassword";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import SearchScreen from "../screens/SearchScreen/searchScreen";
 import FeaturedScreen from "../screens/FeaturedScreen/featuredScreen";
 import UploadScreen from "../screens/UploadScreen/uploadScreen";
@@ -86,11 +88,11 @@ const AppNavigation = (props: Props) => {
                     top: platform=="android" ? null : height*0.02
                   }}
                 >
-                  <FontAwesome5
+                  <Entypo
                     name="home"
                     size={20}
                     color={focused ? "#fdc018" : "gray"}
-                  ></FontAwesome5>
+                  />
                 </View>
               ),
             }}
@@ -114,11 +116,11 @@ const AppNavigation = (props: Props) => {
                     top: platform=="android" ? null : height*0.02
                   }}
                 >
-                  <FontAwesome5
+                  <Feather
                     name="search"
                     size={20}
                     color={focused ? "#fdc018" : "gray"}
-                  ></FontAwesome5>
+                  />
                 </View>
               ),
             }}
@@ -170,8 +172,8 @@ const AppNavigation = (props: Props) => {
                     top: platform=="android" ? null : height*0.02
                   }}
                 >
-                  <FontAwesome5
-                    name="user-alt"
+                  <Feather 
+                    name="users"
                     size={20}
                     color={focused ? "#fdc018" : "gray"}
                   />
