@@ -1,14 +1,11 @@
 import { View, Text, Image, Dimensions } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import AppNavigation from "../../navigation/appNavigation";
 import { supabase } from "../../../lib/supabase";
-import { Session } from "@supabase/supabase-js";
 
 const SplashScreen = () => {
   const navigation = useNavigation();
   const { width, height } = Dimensions.get("screen");
-  // const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
 
@@ -16,13 +13,11 @@ const SplashScreen = () => {
 
       supabase.auth.getSession().then(({ data: { session } }) => {
         if(session){
-          navigation.navigate('InsideScreens')
+          navigation.navigate('Home')
         }else{
           navigation.navigate('Sign-up')
         }
       });
-
-      console.log('done')
 
     }, 500);
 

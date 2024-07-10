@@ -29,15 +29,19 @@ const AppNavigation = (props: Props) => {
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
-
-    console.log(session);
-    console.log(session?.user);
-    console.log(session?.id);
   }, []);
 
   const InsideLayout = () => {
     return (
-      <InsideStack.Navigator initialRouteName="Home">
+      <InsideStack.Navigator initialRouteName="Splash">
+        <InsideStack.Screen
+          name="Splash"
+          component={SplashScreen}
+          options={{
+            title: "Splash Screen",
+            headerShown: false,
+          }}
+        />
         <InsideStack.Screen
           name="Home"
           component={HomeScreen}

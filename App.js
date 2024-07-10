@@ -1,6 +1,7 @@
-import { View, Text } from 'react-native';
 import AppNavigation from './app/navigation/appNavigation';
-import SplashScreen from './app/screens/SplashScreen/splashScreen';
+import { LogBox } from "react-native"
+
+LogBox.ignoreAllLogs()
 
 export default function App() {
   return (
